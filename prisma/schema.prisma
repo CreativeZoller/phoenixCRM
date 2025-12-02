@@ -1,0 +1,101 @@
+// File: prisma/schema.prisma
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// --- Core SaaS & Tenancy ---
+
+model User {
+  id              String   @id @default(uuid())
+  email           String   @unique
+  passwordHash    String
+  name            String?
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  // Add subscription/module flags for SaaS
+  isSalesActive   Boolean  @default(false)
+  isTasksActive   Boolean  @default(false)
+
+  // Relationships
+  contacts        Contact[]
+  deals           Deal[]
+  tasks           Task[]
+}
+
+// --- CRM MVP Entities ---
+
+model Company {
+  id        String    @id @default(uuid())
+  name      String
+  industry  String?
+  city      String?
+  contacts  Contact[]
+  deals     Deal[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Contact {
+  id        String    @id @default(uuid())
+  firstName String
+  lastName  String
+  email     String?   @unique
+  phone     String?
+  // Link to Company
+  companyId String
+  company   Company @relation(fields: [companyId], references: [id])
+  // Link to User who created/owns it (for permissions)
+  userId    String
+  user      User    @relation(fields: [userId], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// --- Sales Pipeline Module ---
+
+enum DealStage {
+  LEAD_IN
+  QUALIFIED
+  PROPOSAL
+  WON
+  LOST
+}
+
+model Deal {
+  id          String    @id @default(uuid())
+  name        String
+  value       Float     @default(0)
+  stage       DealStage @default(LEAD_IN)
+  // Relationships
+  companyId   String
+  company     Company @relation(fields: [companyId], references: [id])
+  ownerId     String
+  owner       User    @relation(fields: [ownerId], references: [id])
+
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+// --- Task Module ---
+
+model Task {
+  id          String    @id @default(uuid())
+  title       String
+  description String?
+  dueDate     DateTime?
+  isCompleted Boolean   @default(false)
+
+  // Link to owner/creator
+  userId      String
+  user        User      @relation(fields: [userId], references: [id])
+  
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}

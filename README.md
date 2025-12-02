@@ -1,89 +1,229 @@
-# PhoenixCRM
+# 🚀 PhoenixCRM
 
-## Table of Contents
+<p align="center">
+  <img src="https://img.shields.io/github/license/YOUR_GITHUB_USERNAME/phoenixcrm?style=flat-square" alt="license" />
+  <img src="https://img.shields.io/github/package-json/v/YOUR_GITHUB_USERNAME/phoenixcrm?style=flat-square" alt="version" />
+  <img src="https://img.shields.io/github/last-commit/YOUR_GITHUB_USERNAME/phoenixcrm?style=flat-square" alt="last commit" />
+  <img src="https://img.shields.io/github/issues/YOUR_GITHUB_USERNAME/phoenixcrm?style=flat-square" alt="issues" />
+  <img src="https://img.shields.io/github/stars/YOUR_GITHUB_USERNAME/phoenixcrm?style=flat-square" alt="stars" />
+</p>
 
--   [Description](#description)
--   [Installation](#installation)
--   [Usage](#usage)
--   [Testing](#testing)
--   [License](#license)
--   [Credits](#credits)
+<p align="center">
+  <img src="https://img.shields.io/badge/Tauri-v2-blue?style=flat-square&logo=tauri" alt="Tauri" />
+  <img src="https://img.shields.io/badge/React-18-blue?style=flat-square&logo=react" alt="React" />
+  <img src="https://img.shields.io/badge/TailwindCSS-latest-38B2AC?style=flat-square&logo=tailwindcss" alt="Tailwind" />
+  <img src="https://img.shields.io/badge/Prisma-ORM-blue?style=flat-square&logo=prisma" alt="Prisma" />
+  <img src="https://img.shields.io/badge/PostgreSQL-DB-316192?style=flat-square&logo=postgresql" alt="PostgreSQL" />
+</p>
 
-## Description
+<p align="center">
+  <img src="https://img.shields.io/badge/Platform-macOS%20%7C%20Windows%20%7C%20Linux-black?style=flat-square" alt="Platforms" />
+  <img src="https://img.shields.io/badge/Tests-Jest%20%7C%20Cypress-yellow?style=flat-square&logo=jest" alt="Testing" />
+</p>
 
-Angular CRUD Application developed for Project/Team and Customer management.
 
-### Version
+PhoenixCRM is a modern, lightweight, modular CRM application built using **Tauri v2**, **React**, **Vite**, **Tailwind CSS**, **Prisma**, and **PostgreSQL**.
 
-0.0.0
+It is designed to be fast, secure, offline-capable, and fully cross-platform, with a flexible architecture suitable for future SaaS expansion.
+
+## 📚 Table of Contents
+
+- [🚀 PhoenixCRM](#-phoenixcrm)
+  - [📚 Table of Contents](#-table-of-contents)
+  - [📝 Description](#-description)
+    - [Demo](#demo)
+  - [✨ Features](#-features)
+    - [🔐 Core Modules](#-core-modules)
+    - [🧑‍🤝‍🧑 CRM Capabilities](#-crm-capabilities)
+    - [📊 Optional / Advanced Modules](#-optional--advanced-modules)
+    - [🧩 Architectural Approach](#-architectural-approach)
+  - [🛠 Tech Stack](#-tech-stack)
+  - [⚙️ Installation](#️-installation)
+    - [1. Prerequisites](#1-prerequisites)
+    - [2. Setup](#2-setup)
+      - [1. Clone the repository](#1-clone-the-repository)
+      - [2. Install dependencies](#2-install-dependencies)
+      - [3. Configure the database (Prisma)](#3-configure-the-database-prisma)
+  - [▶️ Usage](#️-usage)
+    - [Run the application (Tauri Desktop Mode)](#run-the-application-tauri-desktop-mode)
+    - [Run frontend only (Vite development server)](#run-frontend-only-vite-development-server)
+  - [📁 Project Structure](#-project-structure)
+  - [🧪 Testing](#-testing)
+    - [Unit tests (Jest)](#unit-tests-jest)
+    - [End-to-End tests (Cypress)](#end-to-end-tests-cypress)
+  - [📄 License](#-license)
+  - [👥 Credits](#-credits)
+  - [🤝 How to Contribute](#-how-to-contribute)
+
+## 📝 Description
+
+PhoenixCRM is a Tauri-based CRM system originally inspired by an Angular CRUD implementation, now completely reimagined using a modern desktop-first architecture.
+The system includes customer, project, product, order, and media management features, enhanced with modular expansion capabilities such as sales pipeline and task management.
+
+Its goal is to provide:
+
+- lightning-fast performance
+- a secure and lightweight desktop runtime (via Tauri)
+- offline-first support
+- modular extensibility
+- a mobile-first UI
+- long-term SaaS scalability
 
 ### Demo
 
-Live demo is available at: HREF
+(Coming soon — add link here: HREF)
 
-![dependencies](https://img.shields.io/librariesio/github/CreativeZoller/phoenixCRM?logo=dependencies)
-![GitHub issues](https://img.shields.io/github/issues-raw/CreativeZoller/phoenixCRM?logo=issues)
-![GitHub last commit](https://img.shields.io/github/last-commit/CreativeZoller/phoenixCRM?logo=last%20commit)
+## ✨ Features
 
-Badges aren't necessary, per se, but they demonstrate street cred. Badges let other developers know that you know what you're doing. Check out the badges hosted by [shields.io](https://shields.io/). You may not understand what they all represent now, but you will in time.
+### 🔐 Core Modules
 
-#### Features
+- Authentication
+- User Settings
+- Application Layout
+- Shared UI infrastructure
 
--   Angular 13 for GUI with Bootstrap 5
--   Firebase for data management
--   E-mail / Gmail login
--   Customer / Client management
--   Project management
--   Product management
--   Order management
--   Message management
--   Other media management
+### 🧑‍🤝‍🧑 CRM Capabilities
 
-## Installation
+- Customer / Client management
+- Project management
+- Product management
+- Order management
+- Messaging module
+- Media storage & management
 
-What are the steps required to install your project? Provide a step-by-step description of how to get the development environment running.
+### 📊 Optional / Advanced Modules
 
-## Usage
+- **Sales** — Kanban-style pipeline
+- **Tasks** — task management with statuses
 
-Provide instructions and examples for use. Include screenshots as needed.
+### 🧩 Architectural Approach
 
-To add a screenshot, create an `assets/images` folder in your repository and upload your screenshot to it. Then, using the relative filepath, add it to your README using the following syntax:
+- Modular system (every domain lives in `src/modules/`)
+- Only the modules included in a user's subscription are loaded
+- Unified data layer through Prisma ORM
+- PostgreSQL-based centralized database
 
-    ```md
-    ![alt text](assets/images/screenshot.png)
-    ```
+## 🛠 Tech Stack
 
-### Development server
+| Area            | Technology       |
+| --------------- | ---------------- |
+| Desktop Runtime | **Tauri v2**     |
+| Frontend        | **React + Vite** |
+| Styling         | **Tailwind CSS** |
+| ORM             | **Prisma**       |
+| Database        | **PostgreSQL**   |
+| Testing         | Jest, Cypress    |
+| Build Tools     | Node.js, Rust    |
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## ⚙️ Installation
 
-### Build
+### 1. Prerequisites
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+- Node.js (v18+)
+- Rust
 
-### Code scaffolding
+Install the Tauri CLI:
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+```bash
+cargo install tauri-cli --version 2.0.0-beta.18
+```
 
-### Build
+- PostgreSQL instance
+- (Optional) Docker for local PostgreSQL
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+### 2. Setup
 
-## Testing
+#### 1. Clone the repository
 
-### Running unit tests
+```bash
+git clone [YOUR_REPO_URL]
+cd phoenixcrm
+```
 
-Run `ng test` to execute the unit tests via [Jest](https://jestjs.io/).
+#### 2. Install dependencies
 
-### Running end-to-end tests
+```bash
+npm install
+```
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+#### 3. Configure the database (Prisma)
 
-## License
+- Copy the environment file:
+
+```bash
+cp .env.example .env
+```
+
+- Update the DATABASE_URL inside .env.
+
+- Initialize the schema:
+
+```bash
+npx prisma migrate dev --name init_models
+npx prisma generate
+```
+
+## ▶️ Usage
+
+### Run the application (Tauri Desktop Mode)
+
+```bash
+npm run tauri
+```
+
+### Run frontend only (Vite development server)
+
+```bash
+npm run dev
+```
+
+## 📁 Project Structure
+
+PhoenixCRM follows a modular architecture:
+
+```bash
+src/
+└── modules/
+    ├── Core/        # Auth, Layout, Settings
+    ├── Contacts/    # Customer / Client management
+    ├── Sales/       # Sales Pipeline (Kanban)
+    └── Tasks/       # Task Management
+```
+
+This enables:
+
+- clean separation of concerns
+- subscription-based module activation
+- easier long-term maintenance
+- plug-and-play extensibility
+
+## 🧪 Testing
+
+### Unit tests (Jest)
+
+```bash
+npm run test:unit
+```
+
+### End-to-End tests (Cypress)
+
+Headless:
+
+```bash
+npm run test:e2e
+```
+
+Interactive:
+
+```bash
+npm run test:cypress
+```
+
+## 📄 License
 
 The last section of a high-quality README file is the license. This lets other developers know what they can and cannot do with your project. If you need help choosing a license, refer to [https://choosealicense.com/](https://choosealicense.com/).
 
-## Credits
+## 👥 Credits
 
 List your collaborators, if any, with links to their GitHub profiles.
 
@@ -91,6 +231,6 @@ If you used any third-party assets that require attribution, list the creators w
 
 If you followed tutorials, include links to those here as well.
 
-## How to Contribute
+## 🤝 How to Contribute
 
 If you would like to contribute to this project, or having suggestions, feel free to read the [CONTRIBUTING](CONTRIBUTING.md) documentation and/or the [Contributor Covenant](https://www.contributor-covenant.org/) industry standard.

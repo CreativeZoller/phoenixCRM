@@ -1,0 +1,21 @@
+{
+  "build": {
+    "devUrl": "http://localhost:1420",
+    "frontendDist": "../dist"
+  },
+  "package": {
+    "productName": "Tauri-CRM-MVP",
+    "version": "0.0.1"
+  },
+  "identifier": "com.tauri.crm.mvp",
+  "plugins": {
+    "window": {
+      "center": true,
+      "width": 1200,
+      "height": 800,
+      "resizable": true,
+      "title": "Tauri CRM MVP",
+      "userAgent": "Tauri CRM App"
+    }
+  }
+}
